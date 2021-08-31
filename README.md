@@ -29,6 +29,7 @@ Guess class
 *(q)uit
 *(c)heat
 
-Element class
-*parameter sting of color ("r","y","g","b")
-*shorten color element to single  
+Color class
+*make Red, Green, Yellow, or Blue instances of the class Color 
+*method to shorten color to single letter
+*method to capitalize first letter of color  
