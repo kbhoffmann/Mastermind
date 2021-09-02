@@ -1,9 +1,11 @@
 # Mastermind
-Game class, Feedback class, Guess class, Secret class, Element class
+Game class, Feedback class, Guess class, Secret class
 
 Game class
+---------------
+*start and end method
 *instructions(i)
-*play(p) -- Feedback class, Secret class, Element class
+*play(p) -- Feedback class, Secret class. Guess class
 *quit(q)
 *time tracking
 
@@ -20,16 +22,22 @@ Feedback class
 *compare guess to secret using order  ->if order AND color correct
 *compare guess to secret without order ->returns if color correct
 *print proper feedback as a string/ our responses
+*number of guesses (or put this in Game class) -- number counter (instance variable)
+*combine w/ Guess class?
 
 Guess class
 *user input parameter
 *correct guess method? win?
 *is proper guess?
-*number of guesses (or put this in Game class)
 *(q)uit
-*(c)heat
+*(c)heat   - print the secret as a string
+*if secret is guessed - end the game, print a winning comment
 
-Color class
-*make Red, Green, Yellow, or Blue instances of the class Color 
-*method to shorten color to single letter
-*method to capitalize first letter of color  
+Runner file --->input = gets.chomp q,i,c,p
+
+if (p)lay =  guess = string of 4 colors
+capitalize for feedback at some point?????
+put guess string into array
+compare to secret array
+check player's guess for length
+string.length   <4 too short; >4 too long, == 4  play...go to feedback/comparison
