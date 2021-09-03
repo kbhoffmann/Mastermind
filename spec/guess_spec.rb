@@ -13,8 +13,7 @@ RSpec.describe Guess do
   it "can take a user input" do
     user_input_1 = "rgby"
     guess_1 = Guess.new(user_input_1)
-    # colors = ["blue", "green", "yellow", "red"]
-    # secret_1 = Secret.new(colors)
+
     expect(guess_1.user_input).to eq("rgby")
   end
 
@@ -30,74 +29,90 @@ RSpec.describe Guess do
     expect(guess_3.check_length?).to eq(false)
   end
 
-end
 
-#   xit "can identify the correct answer" do
-#     user_input = "bgyr"
-#     guess_1 = Guess.new(user_input)
-#     colors = ["blue", "green", "yellow", "red"]
-#     secret_1 = Secret.new(colors)
-#
-#     expect(guess_1.correct_format).to eq(secret_1.shortened)
-#
-#     user_input = "rgby"
-#     guess_2 = Guess.new(user_input)
-#     colors = ["blue", "green", "yellow", "blue"]
-#     secret_2 = Secret.new(colors)
-#
-#     expect(guess_2.correct_format).to not_eq(secret_2.shortened)
-#   end
-#
-#   xit "can identify if user wants to quit" do
-#
-#     user_input = "q"
-#     guess_1 = Guess.new(user_input)
-#
-#     expect(guess_1.is_quit?).to eq(true)
-#
-#     user_input = "i"
-#     guess_2 = Guess.new(user_input)
-#
-#     expect(guess_2.is_quit?).to eq(false)
-#   end
-#
-#   xit "can identify if user wants to see instructions" do
-#
-#     user_input = "i"
-#     guess_1 = Guess.new(user_input)
-#
-#     expect(guess_1.is_instructions?).to eq(true)
-#
-#     user_input = "p"
-#     guess_2 = Guess.new(user_input)
-#
-#     expect(guess_2.is_instructions?).to eq(false)
-#
-#   end
-#   xit "can identify if user wants to play the game" do
-#
-#     user_input = "p"
-#     guess_1 = Guess.new(user_input)
-#
-#     expect(guess_1.is_play?).to eq(true)
-#
-#     user_input = "i"
-#     guess_2 = Guess.new(user_input)
-#
-#     expect(guess_2.is_play?).to eq(false)
-#
-#   end
-#
-#   xit "can identify if user wants to cheat" do
-#     user_input = "c"
-#     guess_1 = Guess.new(user_input)
-#
-#     expect(guess_1.is_play?).to eq(true)
-#
-#     user_input = "i"
-#     guess_2 = Guess.new(user_input)
-#
-#     expect(guess_2.is_play?).to eq(false)
-#   end
-#
-# end
+#create method called correct_format
+  xit "can turn the guess into proper format" do
+
+    user_input = "rgby"
+    guess_1 = Guess.new(user_input)
+
+
+    expect(guess_1.correct_format).to eq(["r", "g", "b", "y"])
+  end
+
+#SKIP THIS METHOD: It will be put in our feedback class
+  #create method called is_correct? that can identify the correct answer
+  # xit "can identify the correct answer" do
+  #   user_input = "bgyr"
+  #   guess_1 = Guess.new(user_input)
+  #   colors = ["blue", "green", "yellow", "red"]
+  #   secret_1 = Secret.new(colors)
+  #
+  #   expect(guess_1.correct_format).to eq(secret_1.shortened)
+  #
+  #   user_input = "rgby"
+  #   guess_2 = Guess.new(user_input)
+  #   colors = ["blue", "green", "yellow", "blue"]
+  #   secret_2 = Secret.new(colors)
+  #
+  #   expect(guess_2.correct_format).to not_eq(secret_2.shortened)
+  # end
+
+#create method called is_quit?
+  xit "can identify if user wants to quit" do
+
+    user_input = "q"
+    guess_1 = Guess.new(user_input)
+
+    expect(guess_1.is_quit?).to eq(true)
+
+    user_input = "i"
+    guess_2 = Guess.new(user_input)
+
+    expect(guess_2.is_quit?).to eq(false)
+  end
+
+#create method called is_instructions?
+  xit "can identify if user wants to see instructions" do
+
+    user_input = "i"
+    guess_1 = Guess.new(user_input)
+
+    expect(guess_1.is_instructions?).to eq(true)
+
+    user_input = "p"
+    guess_2 = Guess.new(user_input)
+
+    expect(guess_2.is_instructions?).to eq(false)
+
+  end
+
+  #create method called is_play?
+  xit "can identify if user wants to play the game" do
+
+    user_input = "p"
+    guess_1 = Guess.new(user_input)
+
+    expect(guess_1.is_play?).to eq(true)
+
+    user_input = "i"
+    guess_2 = Guess.new(user_input)
+
+    expect(guess_2.is_play?).to eq(false)
+
+  end
+
+#create method called is_cheat?
+  xit "can identify if user wants to cheat" do
+    user_input = "c"
+    guess_1 = Guess.new(user_input)
+
+    expect(guess_1.is_play?).to eq(true)
+
+    user_input = "i"
+    guess_2 = Guess.new(user_input)
+
+    expect(guess_2.is_play?).to eq(false)
+  end
+
+end
