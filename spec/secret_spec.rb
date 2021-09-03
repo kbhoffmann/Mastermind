@@ -26,5 +26,7 @@ RSpec.describe Secret do
 
     secret_2.shuffle_4
     expect(secret_2.shortened[0].length).to eq(1)
+    computer_secret = secret_2.shortened
+
   end
 end
