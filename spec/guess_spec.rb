@@ -54,6 +54,7 @@ RSpec.describe Guess do
     secret_2 = Secret.new(colors)
 
     expect(guess_2.correct_format).to not_eq(secret_2.shortened)
+  end
 
   it "can identify if user wants to quit" do
 
