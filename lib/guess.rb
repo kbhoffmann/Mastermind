@@ -7,4 +7,5 @@ class Guess
   def check_length?
     user_input.length == 4
   end
+
 end
