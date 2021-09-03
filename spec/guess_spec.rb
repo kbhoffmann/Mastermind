@@ -96,4 +96,16 @@ RSpec.describe Guess do
 
   end
 
+  it "can identify if user wants to cheat" do
+    user_input = "c"
+    guess_1 = Guess.new(user_input)
+
+    expect(guess_1.is_play?).to eq(true)
+
+    user_input = "i"
+    guess_2 = Guess.new(user_input)
+
+    expect(guess_2.is_play?).to eq(false)
+  end
+
 end
