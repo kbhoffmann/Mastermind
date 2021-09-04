@@ -1,6 +1,7 @@
 require 'pry'
 require './lib/guess'
 require './lib/secret'
+require "./spec/secret_spec.rb"
 
 RSpec.describe Guess do
 
@@ -29,13 +30,10 @@ RSpec.describe Guess do
     expect(guess_3.check_length?).to eq(false)
   end
 
-
-#create method called correct_format
-  xit "can turn the guess into proper format" do
+  it "can turn the guess into proper format" do
 
     user_input = "rgby"
     guess_1 = Guess.new(user_input)
-
 
     expect(guess_1.correct_format).to eq(["r", "g", "b", "y"])
   end
@@ -58,8 +56,7 @@ RSpec.describe Guess do
   #   expect(guess_2.correct_format).to not_eq(secret_2.shortened)
   # end
 
-#create method called is_quit?
-  xit "can identify if user wants to quit" do
+  it "can identify if user wants to quit" do
 
     user_input = "q"
     guess_1 = Guess.new(user_input)
@@ -72,8 +69,7 @@ RSpec.describe Guess do
     expect(guess_2.is_quit?).to eq(false)
   end
 
-#create method called is_instructions?
-  xit "can identify if user wants to see instructions" do
+  it "can identify if user wants to see instructions" do
 
     user_input = "i"
     guess_1 = Guess.new(user_input)
@@ -87,8 +83,7 @@ RSpec.describe Guess do
 
   end
 
-  #create method called is_play?
-  xit "can identify if user wants to play the game" do
+  it "can identify if user wants to play the game" do
 
     user_input = "p"
     guess_1 = Guess.new(user_input)
@@ -102,17 +97,17 @@ RSpec.describe Guess do
 
   end
 
-#create method called is_cheat?
-  xit "can identify if user wants to cheat" do
+  it "can identify if user wants to cheat" do
+    
     user_input = "c"
     guess_1 = Guess.new(user_input)
 
-    expect(guess_1.is_play?).to eq(true)
+    expect(guess_1.is_cheat?).to eq(true)
 
     user_input = "i"
     guess_2 = Guess.new(user_input)
 
-    expect(guess_2.is_play?).to eq(false)
+    expect(guess_2.is_cheat?).to eq(false)
   end
 
 end
