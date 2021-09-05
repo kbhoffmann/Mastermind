@@ -1,26 +1,39 @@
-# Finish testing instructions, play, and quit. Introduction/Game class test is complete.
-
-
 require 'pry'
-require './lib/game.rb'
+require './lib/game'
+require './lib/guess'
+require './lib/secret'
+# require './mastermind'
+require './lib/feedback'
 
 RSpec.describe Game do
   it "exists" do
-    game_1 = Game.new
-    expect(game_1).to be_an_instance_of(Game)
+    game = Game.new
+    expect(game).to be_an_instance_of(Game)
   end
-  it "has an introduction" do
-    game_1 = Game.new
-    welcome_message = "Welcome to MASTERMIND\nWould you like to (p)lay, read the (i)nstructions, or (q)uit?"
-    expect(game_1.welcome).to eq(welcome_message)
-  end
-  it "has instructions" do
 
-  end
-  it "plays the game" do
+  # it "can let a user cheat" do
+  #   game = Game.new
+  #   secret_2 = Secret.new('rgyb')
+  #   expect(game.cheat).to eq(secret_2.shortened)
+  # end
 
-  end
-  it "can quit the game" do
+  # it "can take user input for guess" do
+  # expect()
+  # end
 
+  it "can start tracking time" do
+    game = Game.new
+    p game.start_time
   end
+
+  it "can stop tracking time" do
+    game = Game.new
+    p game.end_time
+  end
+
+  it "can calculate time elapsed" do
+    game = Game.new
+    p game.time_elapsed
+  end
+
 end
