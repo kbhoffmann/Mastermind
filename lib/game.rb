@@ -1,14 +1,10 @@
+require 'colorize'
+
 class Game
   def initialize
     @colors = ["blue", "green", "yellow", "red", "blue", "green", "yellow", "red", "blue", "green", "yellow", "red", "blue", "green", "yellow", "red", "blue", "green", "yellow", "red"]
     @secret = Secret.new(@colors)
   end
-
-  # def cheat
-  #   # if user_input == 'c' || user_input == 'cheat'
-  #     puts secret_2.shortened
-  #
-  # end
 
   def play
     @secret.shuffle_4
@@ -23,14 +19,19 @@ class Game
       self.instructions
     elsif guess.is_cheat?
       self.cheat
-    else
+    elsif guess.too_long?
+      feedback = Feedback.new(@secret, guess)
+      puts "Guess is too long, it must be 4 letters long. Try again."
+    elsif guess.too_short?
+      feedback = Feedback.new(@secret, guess)
+      puts "Guess is too short, it must be 4 letters long. Try again."
     end
 
     until feedback.is_win? || guess.is_cheat? || guess.is_quit?
 
       user_input = gets.chomp
       guess = Guess.new(user_input)
-      if guess.check_length?
+      if guess.check_length? && !guess.is_quit?
         feedback = Feedback.new(@secret, guess)
         feedback.print_feedback
 
@@ -40,7 +41,12 @@ class Game
         self.instructions
       elsif guess.is_cheat?
         self.cheat
-      else
+      elsif guess.too_long?
+        feedback = Feedback.new(@secret, guess)
+        puts "Guess is too long, it must be 4 letters long. Try again."
+      elsif guess.too_short?
+        feedback = Feedback.new(@secret, guess)
+        puts "Guess is too short, it must be 4 letters long. Try again."
       end
     end
 
@@ -51,16 +57,18 @@ class Game
   end
 
   def instructions
+    y = "y(ellow)"
+    g = "g(reen)"
+    b = "b(lue)"
+    r = "r(ed)"
+    p "The computer will randomly generate a combination of 4 colors, consisting of a combination that may include #{y}, #{g}, #{r}, and #{b}.  Not all of the colors may be included in the secret combination.  There may be duplicates of some color.  If your guess is incorrect, you will be told how many colors are correct and how many colors are also in the correct position.  You may quit at any time by entering q(uit) or cheat and access the secret by entering (c)heat Good luck!"
   end
 
   def quit
+    puts "Thank you for checking out Mastermind!  Goodbye"
+    exit!
   end
-
-
-
-
-
-
+end
   #
   # puts "What is your first guess?"
   # guess = gets.chomp
@@ -80,25 +88,3 @@ class Game
   # def time_elapsed
   #   end_time - start_time
   # end
-  #
-  #
-  # if guess == 'q' || guess == 'quit'
-  #   puts "Thank you for checking out Mastermind!  Goodbye"
-  #   exit!
-  # end
-  #
-  # if guess.length == 4
-  #   #enter comparison/feedback mode
-  #
-  # elsif guess.length < 4
-  #   puts "Guess is too short, it must be 4 letters long. Try again."
-  #   puts '<'
-  #     $stdin.gets.chomp
-  #
-  # elsif guess.length > 4
-  #   puts "Guess is too long, it must be 4 letters long. Try again."
-  #   puts '<'
-  #     $stdin.gets.chomp
-  # end
-
-end
