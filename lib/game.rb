@@ -8,7 +8,10 @@ class Game
   #
   # end
 
+  puts "What is your first guess?"
+  guess = $stdin.gets.chomp
   #starts tracking time when user enters first guess
+
   def start_time
     Time.new.round(2)
   end
@@ -22,6 +25,26 @@ class Game
   #calculates total time user took to guess secret, prints with winning message
   def time_elapsed
     end_time - start_time
+  end
+
+
+  if guess == 'q' || guess == 'quit'
+    puts "Thank you for checking out Mastermind!  Goodbye"
+    exit!
+  end
+
+  if guess.length == 4
+    #enter comparison/feedback mode
+
+  elsif guess.length < 4
+    puts "Guess is too short, it must be 4 letters long. Try again."
+    puts '<'
+      $stdin.gets.chomp
+
+  elsif guess.length > 4
+    puts "Guess is too long, it must be 4 letters long. Try again."
+    puts '<'
+      $stdin.gets.chomp
   end
 
 end
