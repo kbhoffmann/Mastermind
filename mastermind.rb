@@ -1,8 +1,9 @@
-require 'colorize'
+ require 'colorize'
 # require 'pry'
 # require './lib/guess'
 # require './lib/secret'
 # require './lib/game'
+
 
 welcome_message = "Welcome to MASTERMIND\nWould you like to (p)lay, read the (i)nstructions, or (q)uit?"
 
@@ -38,7 +39,7 @@ elsif user_input == 'q' || user_input == 'quit'
 elsif user_input == 'i' || user_input == 'instructions'
 
   puts instructions
-  puts "Would you like to contintinue to p(lay) or q(uit)?"
+  puts "Would you like to contintinue to (p)lay or (q)uit?"
 
   user_input = $stdin.gets.chomp
 
@@ -56,7 +57,5 @@ elsif user_input == 'i' || user_input == 'instructions'
 
   end
 
-elsif user_input == 'c' || user_input == 'cheat'
-  puts computer_secret
 
 end
