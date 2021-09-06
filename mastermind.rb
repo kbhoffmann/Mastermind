@@ -1,8 +1,10 @@
- require 'colorize'
-# require 'pry'
-# require './lib/guess'
-# require './lib/secret'
-# require './lib/game'
+require 'colorize'
+require 'pry'
+require './lib/guess'
+require './lib/secret'
+require './lib/game'
+require './lib/feedback'
+
 
 
 welcome_message = "Welcome to MASTERMIND\nWould you like to (p)lay, read the (i)nstructions, or (q)uit?"
@@ -22,7 +24,7 @@ instructions = "The computer will randomly generate a combination of 4 colors, c
 play = "The computer has created a secret combination of a series of 4 colors using #{red}, #{green}, #{yellow}, and #{blue}.  Not all colors may be used as some colors may be duplicated in the secret.  What is your 4 color guess?  Type #{r}, #{g}, #{y}, and #{b}."
 
 puts welcome_message
-user_input = $stdin.gets.chomp
+user_input = gets.chomp
 
 if user_input == 'p' || user_input == 'play'
 
@@ -41,7 +43,7 @@ elsif user_input == 'i' || user_input == 'instructions'
   puts instructions
   puts "Would you like to contintinue to (p)lay or (q)uit?"
 
-  user_input = $stdin.gets.chomp
+  user_input = gets.chomp
 
   if user_input == 'p' || user_input == 'play'
 
