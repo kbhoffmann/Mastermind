@@ -29,10 +29,16 @@ class Feedback
      @no_order_uniq_array.length
   end
 
-  def print_feedback
-    puts "'#{guess.user_input.join.upcase}' has #{self.compare_no_order} of the correct elements with #{self.compare_order} in the correct positions\nYou've taken #{guess.count} guess"
-
+  def is_win?
+    secret.shuffle_4
+    guess.correct_format == secret.colors_4
   end
+  
+  def print_feedback
+    puts "'#{guess.correct_format.join.upcase}' has #{self.compare_no_order} of the correct elements with #{self.compare_order} in the correct positions\nYou've taken #{guess.count} guess"
+  end
+
+
 
 
 
