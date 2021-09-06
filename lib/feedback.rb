@@ -36,7 +36,9 @@ class Feedback
 
   def print_feedback
     if self.is_win? == true
-      puts "Congratulations! You guessed the sequence '#{guess.correct_format.join.upcase}' in #{guess.count} guesses over #{$time}\nDo you want to (p)lay again or (q)uit?"
+      $time_end = Time.new.round(2)
+      $time = $time_end - $time_start
+      puts "Congratulations! You guessed the sequence '#{guess.correct_format.join.upcase}' in #{guess.count} guesses over #{$time} seconds\nDo you want to (p)lay again or (q)uit?"
     else
     puts "'#{guess.correct_format.join.upcase}' has #{self.compare_no_order} of the correct elements with #{self.compare_order} in the correct positions\nYou've taken #{guess.count} guess"
     end

@@ -7,7 +7,8 @@ class Game
   end
 
   def play
-    @secret.shuffle_4
+    $time_start = Time.new.round(2)
+    p @secret.shuffle_4
     user_input = gets.chomp
     guess = Guess.new(user_input)
     if guess.check_length?
@@ -49,7 +50,6 @@ class Game
         puts "Guess is too short, it must be 4 letters long. Try again."
       end
     end
-
   end
 
   def cheat
