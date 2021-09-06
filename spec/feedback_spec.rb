@@ -135,8 +135,24 @@ RSpec.describe Feedback do
     # expect(feedback.counter).to eq(4)
 
 
-  xit "will provide feedback" do
-    expect().to eq()
+  it "will tell you if you have won" do
+
+    computer_secret = ['r', 'b', 'g', 'y']
+    guess_1 = ['r', 'b', 'g', 'y']
+    guess = Guess.new(guess_1)
+    secret = Secret.new(computer_secret)
+    feedback = Feedback.new(secret, guess)
+
+    expect(feedback.is_win?).to be(true)
+
+    computer_secret = ['r', 'b', 'y', 'y']
+    guess_1 = ['r', 'b', 'g', 'y']
+    guess = Guess.new(guess_1)
+    secret = Secret.new(computer_secret)
+    feedback = Feedback.new(secret, guess)
+
+    expect(feedback.is_win?).to be(false)
+
   end
 
   #if guess not correct, player guesses again.
