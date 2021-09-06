@@ -33,17 +33,17 @@ class Guess
   def is_cheat?
     user_input == "c" || user_input == "cheat"
   end
-  
+
   def count
     @@count
   end
 
   def too_short?
-    guess.length < 4
+    @user_input.length < 4
   end
 
   def too_long?
-    guess.length > 4
+    @user_input.length > 4
   end
 
 end
