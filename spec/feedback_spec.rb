@@ -24,7 +24,6 @@ RSpec.describe Feedback do
     feedback = Feedback.new(secret, guess)
 
     expect(feedback.counter_order).to eq(0)
-    expect(feedback.counter_no_order).to eq(0)
   end
 
 
@@ -69,44 +68,102 @@ RSpec.describe Feedback do
   #hash example--> colors_guess = {red: #, green: #, yellow: #, blue: #}
   #                colors_secret = {red: #, green: #, yellow: #, blue: #}
   it "can check how many colors match without order mattering" do
-    computer_secret = ['r', 'r', 'b', 'b']
+    computer_secret = ['r', 'r', 'r', 'r']
     guess_1 = ['r', 'b', 'b', 'y']
     guess = Guess.new(guess_1)
     secret = Secret.new(computer_secret)
     feedback = Feedback.new(secret, guess)
+    expect(feedback.compare_no_order).to eq(1)
+
+    computer_secret = ['r', 'r', 'b', 'b']
+    guess_1 = ['r', 'r', 'b', 'b']
+    guess = Guess.new(guess_1)
+    secret = Secret.new(computer_secret)
+    feedback = Feedback.new(secret, guess)
     expect(feedback.compare_no_order).to eq(2)
+
+    computer_secret = ['r', 'g', 'b', 'y']
+    guess_1 = ['b', 'b', 'b', 'g']
+    guess = Guess.new(guess_1)
+    secret = Secret.new(computer_secret)
+    feedback = Feedback.new(secret, guess)
+    expect(feedback.compare_no_order).to eq(2)
+
+    computer_secret = ['r', 'b', 'g', 'y']
+    guess_1 = ['y', 'g', 'b', 'r']
+    guess = Guess.new(guess_1)
+    secret = Secret.new(computer_secret)
+    feedback = Feedback.new(secret, guess)
+    expect(feedback.compare_no_order).to eq(4)
   end
-
-
-
-
 
 
   #This gives feedback in regards to correct colors AND position.   Need to account for just correct Number of colors correct too.
-  xit "can give feedback to player about guess" do
+  it "can give feedback to player about guess" do
 
-    feedback = Feedback.new
-    computer_secret = ['r', 'g', 'y', 'b']
-    guess_1 = ['r', 'g', 'b', 'y']
-    #Would print feedback that "#{guess_} has 0 of the correct elements in the correct position.
-    expect(feedback.counter).to eq(0)
+    computer_secret = ['r', 'b', 'g', 'y']
+    guess_1 = ['y', 'g', 'b', 'r']
+    guess = Guess.new(guess_1)
+    secret = Secret.new(computer_secret)
+    feedback = Feedback.new(secret, guess)
+
+    feedback.print_feedback
+
+    computer_secret = ['r', 'b', 'g', 'y']
+    guess_2 = ['g', 'g', 'b', 'r']
+    guess = Guess.new(guess_2)
+    secret = Secret.new(computer_secret)
+    feedback = Feedback.new(secret, guess)
+
+    feedback.print_feedback
+
+    $time = 5
+    computer_secret = ['g', 'g', 'b', 'r']
+    guess_2 = ['g', 'g', 'b', 'r']
+    guess = Guess.new(guess_2)
+    secret = Secret.new(computer_secret)
+    feedback = Feedback.new(secret, guess)
+
+    feedback.print_feedback
+
+
+  end
+  #
+  #   #Would print feedback that "#{guess_} has 0 of the correct elements in the correct position.
+  #   expect(feedback.print_feedback).to be_a(String)
 
     #Would print feedback that "#{guess_} has 1 of the correct elements in the correct position.
-    expect(feedback.counter).to eq(1)
+    # expect(feedback.counter).to eq(1)
+    #
+    # #Would print feedback that "#{guess_} has 2 of the correct elements in the correct position.
+    # expect(feedback.counter).to eq(2)
+    #
+    # #Would print feedback that "#{guess_} has 3 of the correct elements in the correct position.
+    # expect(feedback.counter).to eq(3)
+    #
+    # #Would print "Congratulations! You guessed the sequence #{computer_secret} in #{number_number_of_guesses} over #{time_of_play}.   Do you want to (p)lay again or (q)uit?
+    # #gets.chomp
+    # expect(feedback.counter).to eq(4)
 
-    #Would print feedback that "#{guess_} has 2 of the correct elements in the correct position.
-    expect(feedback.counter).to eq(2)
 
-    #Would print feedback that "#{guess_} has 3 of the correct elements in the correct position.
-    expect(feedback.counter).to eq(3)
+  it "will tell you if you have won" do
 
-    #Would print "Congratulations! You guessed the sequence #{computer_secret} in #{number_number_of_guesses} over #{time_of_play}.   Do you want to (p)lay again or (q)uit?
-    #gets.chomp
-    expect(feedback.counter).to eq(4)
-  end
+    computer_secret = ['r', 'b', 'g', 'y']
+    guess_1 = ['r', 'b', 'g', 'y']
+    guess = Guess.new(guess_1)
+    secret = Secret.new(computer_secret)
+    feedback = Feedback.new(secret, guess)
 
-  xit "will provide feedback" do
-    expect().to eq()
+    expect(feedback.is_win?).to be(true)
+
+    computer_secret = ['r', 'b', 'y', 'y']
+    guess_1 = ['r', 'b', 'g', 'y']
+    guess = Guess.new(guess_1)
+    secret = Secret.new(computer_secret)
+    feedback = Feedback.new(secret, guess)
+
+    expect(feedback.is_win?).to be(false)
+
   end
 
   #if guess not correct, player guesses again.
