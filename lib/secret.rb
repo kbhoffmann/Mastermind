@@ -1,5 +1,6 @@
 class Secret
-  attr_reader :colors_4, :colors
+  attr_reader :colors
+  attr_accessor :colors_4
   def initialize(colors)
     @colors = colors
     @colors_4 = []
@@ -7,14 +8,13 @@ class Secret
   end
 
   def shuffle_4
-    if colors.count == 4
-      @colors_4 = colors
+    if colors_4.count == 4
     else
       4.times do
         @colors_4 << colors.shuffle.pop
       end
     end
-    return @colors_4
+     @colors_4
 
   end
 
