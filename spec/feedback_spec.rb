@@ -116,6 +116,17 @@ RSpec.describe Feedback do
     feedback = Feedback.new(secret, guess)
 
     feedback.print_feedback
+
+    $time = 5
+    computer_secret = ['g', 'g', 'b', 'r']
+    guess_2 = ['g', 'g', 'b', 'r']
+    guess = Guess.new(guess_2)
+    secret = Secret.new(computer_secret)
+    feedback = Feedback.new(secret, guess)
+
+    feedback.print_feedback
+
+
   end
   #
   #   #Would print feedback that "#{guess_} has 0 of the correct elements in the correct position.
