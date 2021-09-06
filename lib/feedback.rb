@@ -11,9 +11,9 @@ class Feedback
   def compare_order
     secret.shuffle_4
     4.times do |i|
-      if secret.colors_4[i] == guess.correct_format[i]
+      if secret.shortened[i] == guess.correct_format[i]
         @counter_order += 1
-      else secret.colors_4[i] != guess.correct_format[i]
+      else secret.shortened[i] != guess.correct_format[i]
         @counter_order += 0
       end
     end
@@ -23,7 +23,7 @@ class Feedback
   def compare_no_order
     secret.shuffle_4
     guess.correct_format.uniq.find_all do |i|
-       @no_order_uniq_array << ((secret.colors_4).find {|x| i == x})
+       @no_order_uniq_array << ((secret.shortened).find {|x| i == x})
     end
      @no_order_uniq_array = @no_order_uniq_array.compact
      @no_order_uniq_array.length
@@ -31,7 +31,7 @@ class Feedback
 
   def is_win?
     secret.shuffle_4
-    guess.correct_format == secret.colors_4
+    guess.correct_format == secret.shortened
   end
 
   def print_feedback
