@@ -1,5 +1,3 @@
-require "./spec/secret_spec.rb"
-
 class Guess
   @@count = 0
   attr_reader :user_input
