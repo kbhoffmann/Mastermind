@@ -8,7 +8,7 @@ class Game
 
   def play
     $time_start = Time.new.round(2)
-    p @secret.shuffle_4
+    @secret.shuffle_4
     user_input = gets.chomp
     guess = Guess.new(user_input)
     if guess.check_length?
