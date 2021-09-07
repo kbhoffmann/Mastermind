@@ -53,7 +53,7 @@ class Game
   end
 
   def cheat
-    puts @secret.colors_4
+    p @secret.shortened.join.upcase
   end
 
   def instructions
