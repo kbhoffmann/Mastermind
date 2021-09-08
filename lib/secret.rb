@@ -1,10 +1,8 @@
 class Secret
-  attr_reader :colors
-  attr_accessor :colors_4
+  attr_reader :colors, :colors_4
   def initialize(colors)
     @colors = colors
     @colors_4 = []
-
   end
 
   def shuffle_4
@@ -15,17 +13,13 @@ class Secret
       end
     end
      @colors_4
-
   end
 
   def shortened
     colors_first_letter = []
-
     @colors_4.each do |color|
-
       colors_first_letter << color[0]
     end
     return colors_first_letter
   end
-
 end
