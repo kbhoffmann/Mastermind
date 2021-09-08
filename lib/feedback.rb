@@ -1,6 +1,6 @@
 
 class Feedback
-  attr_reader :counter, :secret, :guess, :counter_order
+  attr_reader :secret, :guess
   def initialize(secret, guess)
     @secret = secret
     @guess = guess
