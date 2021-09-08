@@ -10,11 +10,11 @@ class Game
   end
 
   def play
-
+    @secret = Secret.new(@colors)
     $time_start = Time.new.round(2)
     @guess = Guess.new(nil)
     $count = 0
-    until @guess.is_cheat? || @guess.is_quit?
+    until @guess.is_quit?
       @secret.shuffle_4
       user_input = gets.chomp
       @guess = Guess.new(user_input)
