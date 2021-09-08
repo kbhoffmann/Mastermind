@@ -1,9 +1,9 @@
 class Guess
-  @@count = 0
+  $count = 0
   attr_reader :user_input
   def initialize (user_input)
     @user_input = user_input
-    @@count += 1
+    $count += 1
   end
 
   def check_length?
@@ -34,9 +34,9 @@ class Guess
     user_input == "c" || user_input == "cheat"
   end
 
-  def count
-    @@count
-  end
+  # def count
+  #   @@count
+  # end
 
   def too_short?
     @user_input.length < 4
