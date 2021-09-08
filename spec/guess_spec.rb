@@ -18,7 +18,7 @@ RSpec.describe Guess do
     expect(guess_1.user_input).to eq("rgby")
   end
 
-  it "can tell if user input is correct" do
+  it "can tell if user input is 4 char long" do
     user_input = "rgbi"
     guess_1 = Guess.new(user_input)
 
@@ -30,31 +30,13 @@ RSpec.describe Guess do
     expect(guess_3.check_length?).to eq(false)
   end
 
-  it "can turn the guess into proper format" do
+  it "can turn the guess into proper format (array)" do
 
     user_input = "rgby"
     guess_1 = Guess.new(user_input)
 
     expect(guess_1.correct_format).to eq(["r", "g", "b", "y"])
   end
-
-#SKIP THIS METHOD: It will be put in our feedback class
-  #create method called is_correct? that can identify the correct answer
-  # xit "can identify the correct answer" do
-  #   user_input = "bgyr"
-  #   guess_1 = Guess.new(user_input)
-  #   colors = ["blue", "green", "yellow", "red"]
-  #   secret_1 = Secret.new(colors)
-  #
-  #   expect(guess_1.correct_format).to eq(secret_1.shortened)
-  #
-  #   user_input = "rgby"
-  #   guess_2 = Guess.new(user_input)
-  #   colors = ["blue", "green", "yellow", "blue"]
-  #   secret_2 = Secret.new(colors)
-  #
-  #   expect(guess_2.correct_format).to not_eq(secret_2.shortened)
-  # end
 
   it "can identify if user wants to quit" do
 
@@ -98,7 +80,7 @@ RSpec.describe Guess do
   end
 
   it "can identify if user wants to cheat" do
-    
+
     user_input = "c"
     guess_1 = Guess.new(user_input)
 
@@ -110,4 +92,30 @@ RSpec.describe Guess do
     expect(guess_2.is_cheat?).to eq(false)
   end
 
+  it "can tell if input is too short" do
+    user_input = "dr"
+    guess_1 = Guess.new(user_input)
+
+    expect(guess_1.too_short?).to eq(true)
+
+    user_input = "drdd"
+    guess_1 = Guess.new(user_input)
+
+    expect(guess_1.too_short?).to eq(false)
+
+  end
+
+  it "can tell if input is too long" do
+
+    user_input = "drddd"
+    guess_1 = Guess.new(user_input)
+
+    expect(guess_1.too_long?).to eq(true)
+
+    user_input = "drdd"
+    guess_1 = Guess.new(user_input)
+
+    expect(guess_1.too_long?).to eq(false)
+
+  end
 end

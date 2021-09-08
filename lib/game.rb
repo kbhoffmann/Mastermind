@@ -53,7 +53,6 @@ class Game
     if @guess.is_quit?
       self.quit
     elsif @guess.check_length?
-      @feedback = Feedback.new(@secret, @guess)
       @feedback.print_feedback
     elsif @guess.is_play?
       self.instructions
@@ -61,17 +60,13 @@ class Game
     elsif @guess.is_quit?
       self.quit
     elsif @guess.is_instructions?
-      @feedback = Feedback.new(@secret, @guess)
       self.instructions
     elsif @guess.is_cheat?
-      @feedback = Feedback.new(@secret, @guess)
       self.cheat
     elsif @guess.too_long?
-      @feedback = Feedback.new(@secret, @guess)
       puts "Guess is too long, it must be 4 letters long.
        Try again."
     elsif @guess.too_short?
-      @feedback = Feedback.new(@secret, @guess)
       puts "Guess is too short, it must be 4 letters long. Try again."
     end
   end
