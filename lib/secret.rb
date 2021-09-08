@@ -6,7 +6,9 @@ class Secret
   end
 
   def shuffle_4
-    if colors_4.count == 4
+    if @colors_4.count == 4
+    elsif @colors == $computer_secret && $computer_secret.count >= 1
+      @colors_4 = $computer_secret
     else
       4.times do
         @colors_4 << colors.shuffle.pop
