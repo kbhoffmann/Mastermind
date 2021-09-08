@@ -17,9 +17,22 @@ RSpec.describe Game do
   #   expect(game.cheat).to eq(secret_2.shortened)
   # end
 
-  # it "can take user input for guess" do
-  # expect()
-  # end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   it "can start tracking time" do
     game = Game.new
