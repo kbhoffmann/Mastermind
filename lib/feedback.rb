@@ -1,6 +1,6 @@
 
 class Feedback
-  attr_reader :secret, :guess
+  attr_reader :secret, :guess, :counter_order
   def initialize(secret, guess)
     @secret = secret
     @guess = guess
@@ -43,14 +43,4 @@ class Feedback
     puts "'#{guess.correct_format.join.upcase}' has #{self.compare_no_order} of the correct elements with #{self.compare_order} in the correct positions\nYou've taken #{$count} guess"
     end
   end
-
-
-
-
-
-
-
-
-
-
 end
