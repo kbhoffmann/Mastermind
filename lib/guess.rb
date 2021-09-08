@@ -34,10 +34,6 @@ class Guess
     user_input == "c" || user_input == "cheat"
   end
 
-  # def count
-  #   @@count
-  # end
-
   def too_short?
     @user_input.length < 4
   end
